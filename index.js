@@ -13,7 +13,9 @@ const expressApp = express()
 expressApp.use(express.static('uploads'))
 expressApp.use(cors())
 expressApp.use(express.json())
-
+expressApp('/', (req, res) => {
+  res.send('hola mundo desde HEROKU')
+})
 expressApp.post('/', upload.single('file'), (req, res) => {
   const file = req.file
   console.log(file)
