@@ -32,7 +32,7 @@ expressApp.post('/', upload.single('file'), (req, res) => {
   fs.writeFileSync(newPath, req.file.buffer)
 
   res.send({
-    newPath: `http://localhost:${port}/${fileName}.${typeOfFile}`,
+    newPath: `/${fileName}.${typeOfFile}`,
   })
 })
 
