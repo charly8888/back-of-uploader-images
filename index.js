@@ -35,6 +35,14 @@ expressApp.post('/', upload.single('file'), (req, res) => {
   const newPath = `uploads/${fileName}.${typeOfFile}`
   fs.writeFileSync(newPath, req.file.buffer)
 
+  setTimeout(() => {
+    try {
+      fs.unlinkSync(newPath)
+      console.log("rm file " + newPath)
+    } catch (err) {
+      console.error(err)
+    }
+  }, 86400000)
   res.send({
     newPath: `/${fileName}.${typeOfFile}`,
   })
